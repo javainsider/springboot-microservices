@@ -1,16 +1,19 @@
 package com.javainsider.microservices;
 
+import java.util.Map;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class Hello {
 	
-	@RequestMapping("/hello")
-	public @ResponseBody String sayHello(){
+	@RequestMapping("/hello/{name}")
+	public String sayHello( Map model, @PathVariable String name){
 			
-		return "Welcome to spring boot hello web.....";
+		model.put("name", name);
+		return "hello";
 	}
 
 }
